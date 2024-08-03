@@ -1,25 +1,21 @@
 package de.tum.cit.ase;
 
+import de.tum.cit.ase.ares.api.BlacklistPath;
+import de.tum.cit.ase.ares.api.StrictTimeout;
+import de.tum.cit.ase.ares.api.WhitelistPath;
+import de.tum.cit.ase.ares.api.jupiter.PublicTest;
 import org.junit.jupiter.api.*;
+
+import static de.tum.cit.ase.ares.api.util.ReflectionTestUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.InvocationTargetException;
 import java.text.*;
 import java.util.*;
-
-import static de.tum.in.test.api.util.ReflectionTestUtils.*;
-
-import de.tum.in.test.api.BlacklistPath;
-import de.tum.in.test.api.PathType;
-import de.tum.in.test.api.StrictTimeout;
-import de.tum.in.test.api.WhitelistPath;
-import de.tum.in.test.api.jupiter.Public;
 
 /**
  * @author Stephan Krusche (krusche@in.tum.de)
  * @version 5.1 (11.06.2021)
  */
-@Public
 @WhitelistPath("target") // mainly for Artemis
 @BlacklistPath("target/test-classes") // prevent access to test-related classes and resources
 class SortingExampleBehaviorTest {
@@ -39,7 +35,7 @@ class SortingExampleBehaviorTest {
         this.datesWithCorrectOrder = Arrays.asList(date3, date2, date4, date1);
     }
 
-    @Test
+    @PublicTest
     @StrictTimeout(1)
     void testBubbleSort() {
         BubbleSort bubbleSort = new BubbleSort();
@@ -49,7 +45,7 @@ class SortingExampleBehaviorTest {
         }
     }
 
-    @Test
+    @PublicTest
     @StrictTimeout(1)
     void testMergeSort() {
         MergeSort mergeSort = new MergeSort();
@@ -59,7 +55,7 @@ class SortingExampleBehaviorTest {
         }
     }
 
-    @Test
+    @PublicTest
     @StrictTimeout(1)
     void testUseMergeSortForBigList() throws ReflectiveOperationException {
         List<Date> bigList = new ArrayList<Date>();
@@ -72,7 +68,7 @@ class SortingExampleBehaviorTest {
         }
     }
 
-    @Test
+    @PublicTest
     @StrictTimeout(1)
     void testUseBubbleSortForSmallList()  throws ReflectiveOperationException {
         List<Date> smallList = new ArrayList<Date>();
